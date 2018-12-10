@@ -1,9 +1,12 @@
 package com.corej.partI;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Random;
 
-public class Employee {
+import com.corej.partI.abstractClasses.Person;
+
+public class Employee extends Person {
 	private static int nextId;
 	
 	private int id;
@@ -62,5 +65,15 @@ public class Employee {
 	
 	public LocalDate getHireDate() {
 		return hireDate;
+	}
+
+	@Override
+	public String getDescription() {
+		return String.format("an employee with a salary of $%.2f", this.salary);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, salary, hireDate);
 	}
 }
