@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+	<bean id="compactDisc" class="com.musically.soundsys.impl.BlankDisc" >
+		<constructor-arg value="Sgt. Pepper's Lonely Hearts Club Band"/>
+		<constructor-arg value="The Beatles" />
+		<constructor-arg>
+			<list>
+				<value>Sgt. Pepper's Lonely Hearts Club Band</value>
+				<value>With a Little Help from My Friends</value>
+				<value>Getting Better</value>
+			</list>
+		</constructor-arg>
+	</bean>
+<!-- 	<bean id="cdPlayer" class="com.musically.soundsys.player.impl" >
+		<property name="cd" ref="compactDisc"></property>
+	</bean> -->
+</beans>
