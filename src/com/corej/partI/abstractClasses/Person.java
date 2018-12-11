@@ -22,6 +22,6 @@ public abstract class Person {
 	
 	@Override
 	public String toString() {
-		return String.format("%s [name=%s]", getClass().getName(), name);
+		return String.format("Person [name=%s]", name);
 	}
 }

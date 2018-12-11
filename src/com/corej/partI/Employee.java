@@ -6,11 +6,10 @@ import java.util.Random;
 
 import com.corej.partI.abstractClasses.Person;
 
-public class Employee extends Person {
+public class Employee extends Person implements Comparable<Employee> {
 	private static int nextId;
 	
 	private int id;
-	private String name;
 	private double salary;
 	private LocalDate hireDate;
 	
@@ -38,25 +37,19 @@ public class Employee extends Person {
 	}
 
 	public Employee(String name, double salary) {
-		super();
-		this.name = name;
+		super(name);
 		this.salary = salary;
 		this.hireDate = LocalDate.now();
 	}
 	
 	public Employee(String name, double salary, int year, int month, int day) {
-		super();
-		this.name = name;
+		super(name);
 		this.salary = salary;
 		this.hireDate = LocalDate.of(year, month, day);
 	}
 
 	public int getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public double getSalary() {
@@ -74,6 +67,11 @@ public class Employee extends Person {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, salary, hireDate);
+		return Objects.hash(id, this.getName(), salary, hireDate);
+	}
+
+	@Override
+	public int compareTo(Employee o) {
+		return Integer.compare(this.id, o.id);
 	}
 }
