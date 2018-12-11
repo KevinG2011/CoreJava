@@ -6,7 +6,8 @@ import java.util.Random;
 
 import com.corej.partI.abstractClasses.Person;
 
-public class Employee extends Person implements Comparable<Employee> {
+public class Employee extends Person implements 
+	Comparable<Employee>, Cloneable {
 	private static int nextId;
 	
 	private int id;
@@ -73,5 +74,11 @@ public class Employee extends Person implements Comparable<Employee> {
 	@Override
 	public int compareTo(Employee o) {
 		return Integer.compare(this.id, o.id);
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Employee cloned = (Employee) super.clone();
+		return cloned;
 	}
 }
