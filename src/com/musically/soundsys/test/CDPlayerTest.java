@@ -1,6 +1,5 @@
 package com.musically.soundsys.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Rule;
@@ -29,8 +28,5 @@ public class CDPlayerTest {
 	}
 	public void play() {
 		player.play();
-//		assertEquals("Playing Sgt. Pepper's Lonely Hearts Club Band" + 
-//					 "by The Beatles\n", log.getLog());
 	}
-	
 }
