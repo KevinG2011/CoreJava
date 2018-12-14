@@ -1,6 +1,7 @@
 package com.corej.partI.proxy;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -18,6 +19,9 @@ public class TraceHandler implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		if (null == this.target) {
+			return null;
+		}
 		out.print(this.target);
 		out.printf(".%s(",method.getName());
 		if (args != null) {
