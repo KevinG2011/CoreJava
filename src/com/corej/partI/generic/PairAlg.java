@@ -1,43 +1,23 @@
 package com.corej.partI.generic;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import com.corej.partI.Employee;
 import com.corej.partI.Manager;
 
-public class Pair <T, U> {
-	private T first;
-	private U second;
-	public Pair() {
-		super();
-		this.first = null;
-		this.second = null;
-	}
-	public Pair(T first, U second) {
-		super();
-		this.first = first;
-		this.second = second;
+public class PairAlg {
+	public static boolean hasNull(Pair<?, ?> p) {
+		return p.getFirst() == null || p.getSecond() == null;
 	}
 	
-	public T getFirst() { 
-		return this.first; 
-	}
-	public U getSecond() {
-		return this.second;
+	public static <T, U> Pair<T, U> makePair(Class<T> c1, Class<U> c2) 
+			throws InstantiationException, IllegalAccessException {
+		return new Pair<T, U>(c1.newInstance(), c2.newInstance());
 	}
 	
-	public void setFirst(T first) {
-		this.first = first;
-	}
-	
-	public void setSecond(U second) {
-		this.second = second;
-	}
-	
-	public static <T extends Serializable & Comparable> T getMiddle(T... a) {
+	@SafeVarargs	
+	public static <T extends Comparable<T> & Serializable> T getMiddle(T... a) {
 		return a[a.length / 2];
 	}
 	
@@ -54,7 +34,12 @@ public class Pair <T, U> {
 		System.out.println(String.format("%s and %s are bubbies!", e1.getName(), e2.getName()));
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+			throws Exception {
+		String str = "string";
+		Number num = 1;
+		makePair(str.getClass(), num.getClass());
+		
 //		Pair<String, Date> pair = new Pair<>();
 //		String mid = Pair.getMiddle("John", "Q.", "Public");
 //		Pair<String, Date>[] p = new Pair<String, Date>[10]; //error
